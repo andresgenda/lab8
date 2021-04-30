@@ -85,5 +85,30 @@
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
 
+  $(".submit").on("click", function(ev){
+    ev.preventDefault();
+
+    var reservation = {
+      name: $("#reserve-name").val(),
+      phone: $("#reserve-phone").val(),
+      customer: $("#reserve-email").val(),
+      id: $("#reserve-unique-id").val()
+    };
+
+    console.log(reservation);
+
+    $.post("/api/tables", reservation, function(data){
+      if(data) {
+        alert("Si");
+      } else {
+        alert("No");
+      }
+      
+      $("#reserve-name").val("");
+      $("#reserve-phone").val("");
+      $("#reserve-email").val("");
+      $("#reserve-unique-id").val("");
+    });
+  });
 
 </script>
