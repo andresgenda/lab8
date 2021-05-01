@@ -70,9 +70,37 @@
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
 <script type="text/javascript">
+  
+  function displayTables(){
+    $.ajax({url:"/api/tables", method:"GET"})
+    .then(function(tablesInfo){
+      for(var i=0; i<tablesInfo.length; i++){
+        var table = $("#tableList");
+        var elements = `<h5>ID: ${tablesInfo[i].id}</h5><br>
+          <h5>Name: ${tablesInfo[i].name}</h5><br>
+          <h5>Phone: ${tablesInfo[i].phone}</h5><br>
+          <h5>Email: ${tablesInfo[i].email}</h5><br><hr>`;
+        table.append(elements);
+      }
+    })
+  }
 
+  function displayWaitlist(){
+    $.ajax({url:"/api/waitlist", method:"GET"})
+    .then(function(waitlistInfo){
+      for(var i=0; i<waitlistInfo.length; i++){
+        var waitlist = $("#waitList");
+        var elements = `<h5>ID: ${waitlistInfo[i].id}</h5><br>
+          <h5>Name: ${waitlistInfo[i].name}</h5><br>
+          <h5>Phone: ${waitlistInfo[i].phone}</h5><br>
+          <h5>Email: ${waitlistInfo[i].email}</h5><br><hr>`;
+        waitlist.append(elements);
+      }
+    })
+  }
 
-
+  displayTables();
+  displayWaitlist();
 
 </script>
 

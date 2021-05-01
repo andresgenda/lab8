@@ -91,7 +91,7 @@
     var reservation = {
       name: $("#reserve-name").val(),
       phone: $("#reserve-phone").val(),
-      customer: $("#reserve-email").val(),
+      email: $("#reserve-email").val(),
       id: $("#reserve-unique-id").val()
     };
 
@@ -99,11 +99,11 @@
 
     $.post("/api/tables", reservation, function(data){
       if(data) {
-        alert("Si");
+        alert("Congratulations! You have booked a table!");
       } else {
-        alert("No");
+        alert("We are sorry to inform you that you have been placed on the waitlist!");
       }
-      
+
       $("#reserve-name").val("");
       $("#reserve-phone").val("");
       $("#reserve-email").val("");

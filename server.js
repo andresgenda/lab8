@@ -31,7 +31,7 @@ app.get("/api/waitlist", function(req,res){
 })
 
 app.post("/api/tables", function(req,res){
-    if(tablesInfo.length > 5){
+    if(tablesInfo.length > 4){
         waitlistInfo.push(req.body);
         res.json(false);
     }else{
