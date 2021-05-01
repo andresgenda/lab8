@@ -95,8 +95,6 @@
       id: $("#reserve-unique-id").val()
     };
 
-    console.log(reservation);
-
     $.post("/api/tables", reservation, function(data){
       if(data) {
         alert("Congratulations! You have booked a table!");
